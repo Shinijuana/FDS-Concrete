@@ -127,7 +127,7 @@ h2, h3, h4 {
 }
 
 .slide {
-  border: 2px solid transparent;
+  border: 50px solid transparent;
   padding: 0;
   background: none;
   cursor: pointer;
