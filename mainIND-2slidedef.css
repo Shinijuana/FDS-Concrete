@@ -16,7 +16,7 @@ html, body {
   overflow-x: hidden;
   position: relative;
 
-  background: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(212, 255, 214, 1));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(212, 255, 214, 1));
   background-size: cover;
   background-attachment: fixed;
 }
@@ -112,7 +112,7 @@ h2, h3, h4 {
 -------------------------------------------------- */
 .slider {
   position: absolute;
-  bottom: 12vh;
+  bottom: 10vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
