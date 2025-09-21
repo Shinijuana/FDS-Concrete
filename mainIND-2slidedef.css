@@ -16,7 +16,7 @@ html, body {
   overflow-x: hidden;
   position: relative;
 
-  background: linear-gradient(to bottom, rgba(20, 20, 20, .01), rgba(212, 255, 214, 1));
+  background: linear-gradient(to bottom, rgba(200, 200, 200, .01), rgba(212, 255, 214, 1));
   background-size: cover;
   background-attachment: fixed;
 }
