@@ -112,7 +112,7 @@ h2, h3, h4 {
 -------------------------------------------------- */
 .slider {
   position: absolute;
-  bottom: 20vh;
+  bottom: 13vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -216,17 +216,17 @@ h2, h3, h4 {
 
 #ar-button .btn-title {
   font-family: 'OpenSans-Bold', 'Open Sans', Arial, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 550;
-  line-height: 1.2;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.1;
   color: #000000;
 }
 
 #ar-button .btn-subtitle {
-  font-size: .8rem;
-  font-weight: 400;
+  font-size: .7rem;
+  font-weight: 300;
   letter-spacing: 0.05em;
-  line-height: 1.1;
+  line-height: 1;
   color: #000000;
 }
 
@@ -254,10 +254,10 @@ h2, h3, h4 {
 -------------------------------------------------- */
 #animate-button.link-box {
   position: absolute;
-  bottom: 100px;
+  top: 130px;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
+  width: 160px;
 
   display: flex;
   flex-direction: column;
@@ -276,8 +276,8 @@ h2, h3, h4 {
 
 #animate-button .btn-title {
   font-family: 'OpenSans-Bold', 'Open Sans', Arial, sans-serif;
-  font-size: 1.3rem;
-  font-weight: 550;
+  font-size: .9rem;
+  font-weight: 400;
   line-height: 1.2;
   color: #000000;
 }
