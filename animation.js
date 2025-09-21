@@ -36,7 +36,7 @@ modelViewer.addEventListener('load', () => {
 const handleClick = () => {
   if (animationState === 'initial' || animationState === 'pausedAt239') {
     // setta la camera orbit al click su "Open Info"
-    modelViewer.setAttribute('camera-orbit', '5.154deg 62.1deg 1.079m');
+    modelViewer.setAttribute('camera-orbit', '0deg 75deg 0.9155m');
 
     modelViewer.currentTime = 0;
     modelViewer.play({ repetitions: 0 });
