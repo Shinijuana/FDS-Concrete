@@ -16,7 +16,7 @@ html, body {
   overflow-x: hidden;
   position: relative;
 
-  background: linear-gradient(to bottom right, rgba(212, 255, 214, 1), rgba(229, 232, 125, 1));
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(212, 255, 214, 1));
   background-size: cover;
   background-attachment: fixed;
 }
@@ -112,7 +112,7 @@ h2, h3, h4 {
 -------------------------------------------------- */
 .slider {
   position: absolute;
-  bottom: 8vh;
+  bottom: 12vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -193,7 +193,7 @@ h2, h3, h4 {
 
 #ar-button.link-box {
   position: absolute;
-  top: 80px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
@@ -255,7 +255,7 @@ h2, h3, h4 {
 -------------------------------------------------- */
 #animate-button.link-box {
   position: absolute;
-  top: 130px;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   width: 120px;
