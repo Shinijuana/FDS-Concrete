@@ -19,12 +19,18 @@ function updateButtonLabel() {
   }
 }
 
+// reset automatico ogni volta che viene caricato un modello
 modelViewer.addEventListener('load', () => {
+  animationState = 'initial';
+  isAnimating = false;
+
   modelViewer.pause();
   modelViewer.currentTime = 0;
   modelViewer.animationLoop = false;
   modelViewer.animationName = modelViewer.availableAnimations?.[0] || null;
-  updateButtonLabel();
+
+  updateCameraControl();
+  updateButtonLabel(); // bottone torna "Open Info"
 });
 
 const handleClick = () => {
