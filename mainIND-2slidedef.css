@@ -112,7 +112,7 @@ h2, h3, h4 {
 -------------------------------------------------- */
 .slider {
   position: absolute;
-  bottom: 40vh;
+  bottom: 20vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
