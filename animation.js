@@ -35,6 +35,9 @@ modelViewer.addEventListener('load', () => {
 
 const handleClick = () => {
   if (animationState === 'initial' || animationState === 'pausedAt239') {
+    // setta la camera orbit al click su "Open Info"
+    modelViewer.setAttribute('camera-orbit', '5.154deg 62.1deg 1.079m');
+
     modelViewer.currentTime = 0;
     modelViewer.play({ repetitions: 0 });
     isAnimating = true;
@@ -55,6 +58,7 @@ const handleClick = () => {
     requestAnimationFrame(checkFrame);
 
   } else if (animationState === 'pausedAt120') {
+    // qui NON tocchiamo la camera, resta quella già settata
     modelViewer.currentTime = pauseTime1;
     modelViewer.play({ repetitions: 0 });
     isAnimating = true;
@@ -74,6 +78,7 @@ const handleClick = () => {
     requestAnimationFrame(checkEnd);
   }
 };
+
 
 animateButton.addEventListener('click', () => {
   if (!isAnimating) handleClick();
