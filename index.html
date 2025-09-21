@@ -7,8 +7,6 @@
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <link rel="stylesheet" href="mainIND-2slidedef.css">
   <link rel="icon" type="image/png" href="loghi/favicon.png">
- 
-  
 </head>
 <body>
   <header>
@@ -50,30 +48,25 @@
     </button>
 
     <div class="slider">
-  <div class="slides">
-    <button class="slide selected" onclick="switchSrc(this)"  data-src="assets/modello1.glb" style="background-color: #A39B8D;">
-    </button>
-    <button class="slide selected" onclick="switchSrc(this)"  data-src="assets/modello2.glb" style="background-color: #A39B8D;">
-    </button>
-    <button class="slide selected" onclick="switchSrc(this)"  data-src="assets/modello3.glb" style="background-color: #A39B8D;">
-    </button>
-  </div>
-
+      <div class="slides">
+        <button class="slide selected" onclick="switchSrc(this)"  data-src="assets/modello1.glb" style="background-color: #A39B8D;"></button>
+        <button class="slide" onclick="switchSrc(this)"  data-src="assets/modello2.glb" style="background-color: #A39B8D;"></button>
+        <button class="slide" onclick="switchSrc(this)"  data-src="assets/modello3.glb" style="background-color: #A39B8D;"></button>
+      </div>
+    </div>
   </model-viewer>
   
-<script>
-  function switchSrc(button) {
-    const modelViewer = document.querySelector('model-viewer');
-    
-    // Prende il nuovo src dal data attribute del bottone
-    const newSrc = button.getAttribute('data-src');
-    modelViewer.setAttribute('src', newSrc);
+  <script>
+    function switchSrc(button) {
+      const modelViewer = document.querySelector('model-viewer');
+      const newSrc = button.getAttribute('data-src');
+      modelViewer.setAttribute('src', newSrc);
 
-    // Aggiorna lo stato dello slider
-    document.querySelectorAll('.slide').forEach(btn => btn.classList.remove('selected'));
-    button.classList.add('selected');
-}
-</script>
-<script src="animation.js"></script>
+      // aggiorna slider
+      document.querySelectorAll('.slide').forEach(btn => btn.classList.remove('selected'));
+      button.classList.add('selected');
+    }
+  </script>
+  <script src="animation.js"></script>
 </body>
 </html>
