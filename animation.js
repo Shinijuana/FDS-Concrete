@@ -1,90 +1,102 @@
-  const modelViewer = document.getElementById('sens');
-  const animateButton = document.getElementById('animate-button');
+const modelViewer = document.getElementById('sens');
+const animateButton = document.getElementById('animate-button');
 
-  let animationState = 'initial';
-  const pauseAtFrame1 = 27, pauseAtFrame2 = 50, fps = 24;
-  const pauseTime1 = pauseAtFrame1 / fps, pauseTime2 = pauseAtFrame2 / fps;
-  let isAnimating = false;
-  let isInAR = false;
+let animationState = 'initial';
+const pauseAtFrame1 = 27, pauseAtFrame2 = 50, fps = 24;
+const pauseTime1 = pauseAtFrame1 / fps, pauseTime2 = pauseAtFrame2 / fps;
+let isAnimating = false;
+let isInAR = false;
 
-  function updateCameraControl() {
-    modelViewer.cameraControls = !isAnimating;
+function updateCameraControl() {
+  modelViewer.cameraControls = !isAnimating;
+}
+
+function updateButtonLabel() {
+  if (animationState === 'initial' || animationState === 'pausedAt239') {
+    animateButton.querySelector('.btn-subtitle').textContent = 'Open Info';
+  } else if (animationState === 'pausedAt120') {
+    animateButton.querySelector('.btn-subtitle').textContent = 'Close Info';
   }
+}
 
-  modelViewer.addEventListener('load', () => {
-    modelViewer.pause();
+modelViewer.addEventListener('load', () => {
+  modelViewer.pause();
+  modelViewer.currentTime = 0;
+  modelViewer.animationLoop = false;
+  modelViewer.animationName = modelViewer.availableAnimations?.[0] || null;
+  updateButtonLabel();
+});
+
+const handleClick = () => {
+  if (animationState === 'initial' || animationState === 'pausedAt239') {
     modelViewer.currentTime = 0;
-    modelViewer.animationLoop = false;
-    modelViewer.animationName = modelViewer.availableAnimations?.[0] || null;
-  });
+    modelViewer.play({ repetitions: 0 });
+    isAnimating = true;
+    updateCameraControl();
+    animationState = 'playingTo120';
 
-  const handleClick = () => {
-    if (animationState === 'initial' || animationState === 'pausedAt239') {
-      modelViewer.currentTime = 0;
-      modelViewer.play({ repetitions: 0 });
-      isAnimating = true;
-      updateCameraControl();
-      animationState = 'playingTo120';
+    const checkFrame = () => {
+      if (animationState === 'playingTo120' && modelViewer.currentTime >= pauseTime1) {
+        modelViewer.pause();
+        animationState = 'pausedAt120';
+        isAnimating = false;
+        updateCameraControl();
+        updateButtonLabel();
+      } else if (animationState === 'playingTo120') {
+        requestAnimationFrame(checkFrame);
+      }
+    };
+    requestAnimationFrame(checkFrame);
 
-      const checkFrame = () => {
-        if (animationState === 'playingTo120' && modelViewer.currentTime >= pauseTime1) {
-          modelViewer.pause();
-          animationState = 'pausedAt120';
-          isAnimating = false;
-          updateCameraControl();
-        } else if (animationState === 'playingTo120') {
-          requestAnimationFrame(checkFrame);
-        }
-      };
-      requestAnimationFrame(checkFrame);
+  } else if (animationState === 'pausedAt120') {
+    modelViewer.currentTime = pauseTime1;
+    modelViewer.play({ repetitions: 0 });
+    isAnimating = true;
+    updateCameraControl();
 
-    } else if (animationState === 'pausedAt120') {
-      modelViewer.currentTime = pauseTime1;
-      modelViewer.play({ repetitions: 0 });
-      isAnimating = true;
-      updateCameraControl();
+    const checkEnd = () => {
+      if (modelViewer.currentTime >= pauseTime2) {
+        modelViewer.pause();
+        animationState = 'pausedAt239';
+        isAnimating = false;
+        updateCameraControl();
+        updateButtonLabel();
+      } else {
+        requestAnimationFrame(checkEnd);
+      }
+    };
+    requestAnimationFrame(checkEnd);
+  }
+};
 
-      const checkEnd = () => {
-        if (modelViewer.currentTime >= pauseTime2) {
-          modelViewer.pause();
-          animationState = 'pausedAt239';
-          isAnimating = false;
-          updateCameraControl();
-        } else {
-          requestAnimationFrame(checkEnd);
-        }
-      };
-      requestAnimationFrame(checkEnd);
-    }
-  };
+animateButton.addEventListener('click', () => {
+  if (!isAnimating) handleClick();
+});
 
-  animateButton.addEventListener('click', () => {
-    if (!isAnimating) handleClick();
-  });
+const modelView = document.querySelector('model-viewer');
+modelView.addEventListener('ar-button-press', () => {
+  const iosSrc = modelView.getAttribute('ios-src');
+  if (iosSrc && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    window.location.href = iosSrc;
+  }
+});
 
-  const modelView = document.querySelector('model-viewer');
-  modelView.addEventListener('ar-button-press', () => {
-    const iosSrc = modelView.getAttribute('ios-src');
-    if (iosSrc && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
-      window.location.href = iosSrc;
-    }
-  });
-
-  modelViewer.addEventListener('ar-status', (event) => {
-    if (event.detail.status === 'session-started') {
-      isInAR = true;
-      modelViewer.pause();
-      isAnimating = false;
-      updateCameraControl();
-    } else if (event.detail.status === 'not-presenting') {
-      isInAR = false;
-      updateCameraControl();
-    }
-  });
-
-  modelViewer.addEventListener('finished', () => {
+modelViewer.addEventListener('ar-status', (event) => {
+  if (event.detail.status === 'session-started') {
+    isInAR = true;
     modelViewer.pause();
-    animationState = 'pausedAt239';
     isAnimating = false;
     updateCameraControl();
-  });
+  } else if (event.detail.status === 'not-presenting') {
+    isInAR = false;
+    updateCameraControl();
+  }
+});
+
+modelViewer.addEventListener('finished', () => {
+  modelViewer.pause();
+  animationState = 'pausedAt239';
+  isAnimating = false;
+  updateCameraControl();
+  updateButtonLabel();
+});
