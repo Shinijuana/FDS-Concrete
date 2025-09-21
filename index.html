@@ -18,6 +18,7 @@
     camera-orbit="3.35deg 0.0000573deg 1.079m" 
     field-of-view="30deg"
     src="assets/modello1.glb"
+    ios-src="assets/1.usdz"
     shadow-intensity="1"
     ar  
     ar-modes="webxr quick-look"
@@ -49,30 +50,42 @@
 
    <div class="slider">
   <div class="slides">
-    <button class="slide selected" onclick="switchSrc(this)" data-src="assets/modello1.glb">
+    <button class="slide selected" onclick="switchSrc(this)" 
+            data-src="assets/modello1.glb" 
+            data-ios-src="assets/1.usdz">
       <img src="assets/1.webp" alt="Modello 1">
     </button>
-    <button class="slide" onclick="switchSrc(this)" data-src="assets/modello2.glb">
+    <button class="slide" onclick="switchSrc(this)" 
+            data-src="assets/modello2.glb" 
+            data-ios-src="assets/2.usdz">
       <img src="assets/2.webp" alt="Modello 2">
     </button>
-    <button class="slide" onclick="switchSrc(this)" data-src="assets/modello3.glb">
+    <button class="slide" onclick="switchSrc(this)" 
+            data-src="assets/modello3.glb" 
+            data-ios-src="assets/3.usdz">
       <img src="assets/3.webp" alt="Modello 3">
     </button>
   </div>
 </div>
 
+
   </model-viewer>
   
   <script>
     function switchSrc(button) {
-      const modelViewer = document.querySelector('model-viewer');
-      const newSrc = button.getAttribute('data-src');
-      modelViewer.setAttribute('src', newSrc);
+  const modelViewer = document.querySelector('model-viewer');
+  const newSrc = button.getAttribute('data-src');
+  const newIosSrc = button.getAttribute('data-ios-src');
 
-      // aggiorna slider
-      document.querySelectorAll('.slide').forEach(btn => btn.classList.remove('selected'));
-      button.classList.add('selected');
-    }
+  modelViewer.setAttribute('src', newSrc);
+  if (newIosSrc) {
+    modelViewer.setAttribute('ios-src', newIosSrc);
+  }
+
+  // aggiorna slider
+  document.querySelectorAll('.slide').forEach(btn => btn.classList.remove('selected'));
+  button.classList.add('selected');
+}
   </script>
   <script src="animation.js"></script>
 </body>
