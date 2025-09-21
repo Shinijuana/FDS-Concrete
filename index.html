@@ -25,6 +25,7 @@
     ar-scale="auto"
     ar-placement="floor"
     autoplay
+    disable-pan
     interaction-prompt="none"
     camera-controls="false"
     alt="Concrete"
@@ -47,13 +48,20 @@
       <span class="arrow">›</span>
     </button>
 
-    <div class="slider">
-      <div class="slides">
-        <button class="slide selected" onclick="switchSrc(this)"  data-src="assets/modello1.glb" style="background-color: #A39B8D;"></button>
-        <button class="slide" onclick="switchSrc(this)"  data-src="assets/modello2.glb" style="background-color: #A39B8D;"></button>
-        <button class="slide" onclick="switchSrc(this)"  data-src="assets/modello3.glb" style="background-color: #A39B8D;"></button>
-      </div>
-    </div>
+   <div class="slider">
+  <div class="slides">
+    <button class="slide selected" onclick="switchSrc(this)" data-src="assets/modello1.glb">
+      <img src="assets/1.webp" alt="Modello 1">
+    </button>
+    <button class="slide" onclick="switchSrc(this)" data-src="assets/modello2.glb">
+      <img src="assets/2.webp" alt="Modello 2">
+    </button>
+    <button class="slide" onclick="switchSrc(this)" data-src="assets/modello3.glb">
+      <img src="assets/3.webp" alt="Modello 3">
+    </button>
+  </div>
+</div>
+
   </model-viewer>
   
   <script>
