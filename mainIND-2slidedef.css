@@ -205,7 +205,7 @@ h2, h3, h4 {
   flex-direction: column;
   align-items: center;
 
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(212, 255, 214, 0.6);
   border-radius: 30px;
   border-color: transparent;
   box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.2);
@@ -220,7 +220,7 @@ h2, h3, h4 {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.1;
-  color: #000000;
+  color: #101010;
 }
 
 #ar-button .btn-subtitle {
@@ -228,7 +228,7 @@ h2, h3, h4 {
   font-weight: 300;
   letter-spacing: 0.05em;
   line-height: 1;
-  color: #000000;
+  color: #101010;
 }
 
 #ar-button .arrow {
@@ -237,7 +237,7 @@ h2, h3, h4 {
   left: 90%;
   transform: translate(-50%, -50%);
   font-size: 2em;
-  color: #000000;
+  color: #101010;
   transition: transform 0.3s ease;
 }
 
