@@ -127,14 +127,14 @@ h2, h3, h4 {
 }
 
 .slide {
-  border: 50px solid transparent;
+  border: 5px solid transparent;
   padding: 0;
   background: none;
   cursor: pointer;
 }
 
 .slide.selected {
-  border-color: #f39c12; /* evidenzia la slide selezionata */
+  border-color: #E8CA7D; /* evidenzia la slide selezionata */
 }
 
 .slide img {
