@@ -16,10 +16,9 @@ html, body {
   overflow-x: hidden;
   position: relative;
 
-  background: rgba(255, 255, 255, 0.2) url('assets/BG CLEAN EUIPO.png') repeat;
+  background: linear-gradient(to bottom right, rgba(212, 255, 214, 1), rgba(212, 255, 214, .4));
   background-size: cover;
   background-attachment: fixed;
-  animation: flowingSilk 50s linear infinite;
 }
 
 body {
@@ -59,31 +58,6 @@ header {
   height: auto;
   display: block;
   margin-top: 5vh;
-}
-
-/* Bottone info */
-#info-button {
-  margin-left: 0px;           /* distanza rispetto al logo */
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  font-weight: 700;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: rgba(255, 255, 255, 0.6);
-  border: transparent;
-  color: #000000;
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-#info-button:active {
-  background-color: #ffffff;
-  border-color: transparent;
 }
 
 
