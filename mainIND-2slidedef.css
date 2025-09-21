@@ -301,7 +301,7 @@ h2, h3, h4 {
    MODEL-VIEWER
 -------------------------------------------------- */
 model-viewer.model-layer {
-  width: 85%;
+  width: 100%;
   height: calc(100vh - 80px);
   margin-top: 40px;
   position: relative;
