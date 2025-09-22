@@ -74,25 +74,7 @@
   
   <audio id="ar-audio" src="assets/1.mp3" preload="auto" loop></audio>
 
-<script>
-  const modelViewer = document.querySelector("model-viewer");
-  const audioEl = document.getElementById("ar-audio");
 
-  // ascolta lo stato AR
-  modelViewer.addEventListener("ar-status", (event) => {
-    if (event.detail.status === "session-started") {
-      // quando parte la sessione AR → avvia audio
-      audioEl.currentTime = 0;
-      audioEl.play().catch(err => {
-        console.log("Errore avvio audio:", err);
-      });
-    } else if (event.detail.status === "not-presenting") {
-      // quando esci da AR → ferma audio
-      audioEl.pause();
-      audioEl.currentTime = 0;
-    }
-  });
-</script>
 
 
   <script>
