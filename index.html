@@ -20,12 +20,11 @@
     src="assets/modello1.glb"
     ios-src="assets/1.usdz"
     shadow-intensity="1"
-    scale=".6 .6 .6"
+    scale="1 1 1"
     ar  
     ar-modes="webxr quick-look"
     ar-scale="auto"
     ar-placement="floor"
-    autoplay
     disable-pan
     interaction-prompt="none"
     camera-controls="false"
@@ -38,10 +37,6 @@
 
     <button id="ar-failure" role="alert" aria-live="assertive">
       AR is not tracking!
-    </button>
-    
-    <button id="animate-button" class="link-box">
-      <span class="btn-subtitle">Open Info</span>
     </button>
 
     <button slot="ar-button" id="ar-button" class="link-box">
@@ -115,7 +110,4 @@
   document.querySelectorAll('.slide').forEach(btn => btn.classList.remove('selected'));
   button.classList.add('selected');
 }
-  </script>
-  <script src="animation.js"></script>
-</body>
 </html>
