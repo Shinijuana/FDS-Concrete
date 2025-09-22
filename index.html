@@ -74,6 +74,29 @@
   
   <audio id="ar-audio" src="assets/1.mp3" preload="auto" loop></audio>
 
+<script>
+  const modelViewerAudio = document.getElementById('sens');
+  const audioEl = document.getElementById('ar-audio');
+
+  // gestore separato SOLO per l'audio
+  modelViewerAudio.addEventListener('ar-status', (event) => {
+    if (event.detail.status === 'session-started') {
+      // parte la sessione AR → avvia audio
+      audioEl.currentTime = 0;
+      audioEl.play().catch(err => {
+        console.log("Errore avvio audio:", err);
+      });
+    }
+
+    if (event.detail.status === 'not-presenting') {
+      // esci da AR → ferma audio
+      audioEl.pause();
+      audioEl.currentTime = 0;
+    }
+  });
+</script>
+
+
 
 
 
