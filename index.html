@@ -72,27 +72,28 @@
 
   </model-viewer>
   
-  <audio id="ar-audio" src="assets/1.mp3" preload="auto"></audio>
+  <audio id="ar-audio" src="assets/1.mp3" preload="auto" loop></audio>
 
 <script>
   const modelViewer = document.querySelector("model-viewer");
   const audioEl = document.getElementById("ar-audio");
 
-  // evento che segnala cambiamenti della modalità AR
+  // ascolta lo stato AR
   modelViewer.addEventListener("ar-status", (event) => {
     if (event.detail.status === "session-started") {
-      // Inizio AR → fai partire l’audio
+      // quando parte la sessione AR → avvia audio
       audioEl.currentTime = 0;
       audioEl.play().catch(err => {
         console.log("Errore avvio audio:", err);
       });
     } else if (event.detail.status === "not-presenting") {
-      // Fine AR → stop o pausa
+      // quando esci da AR → ferma audio
       audioEl.pause();
       audioEl.currentTime = 0;
     }
   });
 </script>
+
 
   <script>
     function switchSrc(button) {
